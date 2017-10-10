@@ -1,0 +1,12 @@
+{
+  "peers": [
+    {
+      "type": "beacon",
+      "url": "http://dude.org"
+    },
+    {
+      "type": "registry",
+      "url": "http://registry.broadinstitute.org"
+    }
+  ]
+}
