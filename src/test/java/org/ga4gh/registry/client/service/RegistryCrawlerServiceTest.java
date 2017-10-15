@@ -39,4 +39,18 @@ public class RegistryCrawlerServiceTest extends TestCase {
         assertNotNull(resultObject);
         assertTrue(resultObject.containsKey(RegistryClientConstants.JsonKeys.PEERS));
     }
+
+    @Test
+    public void testgetListOfPeers2() {
+        // local variables
+        String registryUrl = "http://localhost:8071/registry/peers";
+        JsonObject resultObject = null;
+
+        // get the result json
+        resultObject = this.registryCrawlerService.getListOfPeers(registryUrl, null);
+
+        // test
+        assertNotNull(resultObject);
+        assertTrue(resultObject.containsKey(RegistryClientConstants.JsonKeys.PEERS));
+    }
 }

@@ -89,6 +89,9 @@ public class RegistryCrawlerService {
 
         // make the REST call if the url hasn't been
         if (!crawlerResultBean.getRegistryUrlVisitedSet().contains(registryUrl)) {
+            // log
+            this.serviceLog.info("Visiting registry url: " + registryUrl);
+
             // add the url to the visited set
             crawlerResultBean.addVisitedRegistryUrl(registryUrl);
 
@@ -121,6 +124,9 @@ public class RegistryCrawlerService {
             } else {
                 this.serviceLog.error("Got null json response to registry call: " + registryUrl);
             }
+
+        } else {
+            this.serviceLog.info("Skipping already visited registry url: " + registryUrl);
         }
     }
 

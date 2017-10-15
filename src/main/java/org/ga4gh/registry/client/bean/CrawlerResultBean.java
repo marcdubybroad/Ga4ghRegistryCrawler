@@ -1,5 +1,7 @@
 package org.ga4gh.registry.client.bean;
 
+import org.apache.log4j.Logger;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -12,15 +14,19 @@ import java.util.Set;
  */
 public class CrawlerResultBean {
     // instance variables
+    private final Logger beanLog = Logger.getLogger(this.getClass().getName());
     Map<String, ServerNodeBean> serverNodeBeanMap = new HashMap<String, ServerNodeBean>();
     Set<String> registryUrlVisitedSet = new HashSet<String>();
 
     public void addServerNode(ServerNodeBean bean) {
         if (bean.getType() == null) {
+            this.beanLog.error("server bean has null type, so skip");
 
         } else if (bean.getUrl() == null) {
+            this.beanLog.error("server bean has null url, so skip");
 
         } else {
+            this.beanLog.info("Adding " + bean.getType() + " node with url: " + bean.getUrl());
             this.serverNodeBeanMap.put(bean.getUrl(), bean);
         }
     }
